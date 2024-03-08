@@ -2,6 +2,7 @@ const express = require("express");
 const router = express.Router();
 const multer = require("multer");
 const path = require("path");
+const fs = require("fs");
 const Book = require("../models/book");
 const Author = require("../models/author");
 
@@ -42,9 +43,18 @@ router.post("/", upload.single("cover"), async (req, res) => {
     // res.redirect(`books/${newBook.id}`);
     res.redirect(`books`);
   } catch {
+    if (book.coverImageName != null) {
+      removeBookCover(book.coverImageName);
+    }
     renderNewPage(res, book, true);
   }
 });
+
+function removeBookCover(filename) {
+  fs.unlink(path.join(uploadPath, filename), (err) => {
+    if (err) console.error(err);
+  });
+}
 
 async function renderNewPage(res, book, hasError = false) {
   try {
@@ -59,4 +69,5 @@ async function renderNewPage(res, book, hasError = false) {
     res.redirect("/books");
   }
 }
+
 module.exports = router;
