@@ -18,8 +18,22 @@ const upload = multer({
 
 //All Books Route
 router.get("/", async (req, res) => {
+  let query = Book.find();
+  if (req.query.title != null && req.query.title != "") {
+    query = query.regex("title", new RegExp(req.query.title, "i"));
+  }
+
+  //returning only those documents where the "publishedDate" is less than or equal to the value of "publishedBefore"
+  if (req.query.publishedBefore != null && req.query.publishedBefore != "") {
+    query = query.lte("publishedDate", req.query.publishedBefore);
+  }
+
+  //"publishedDate" is greater than or equal to the value of "publishedAfter".
+  if (req.query.publishedAfter != null && req.query.publishedAfter != "") {
+    query = query.gte("publishedDate", req.query.publishedAfter);
+  }
   try {
-    const books = await Book.find({});
+    const books = await query.exec();
     res.render("books/index", {
       books: books,
       searchOptions: req.query,
