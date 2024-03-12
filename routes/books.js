@@ -1,13 +1,13 @@
 const express = require("express");
 const router = express.Router();
 //const multer = require("multer");
-const path = require("path");
-const fs = require("fs");
+//const path = require("path");
+//const fs = require("fs");
 const Book = require("../models/book");
 const Author = require("../models/author");
 
 //upload file cover book
-const uploadPath = path.join("public", Book.coverImageBasePath);
+//const uploadPath = path.join("public", Book.coverImageBasePath);
 const imageMimeTypes = ["image/jpeg", "image/png", "images/gif"];
 
 /*

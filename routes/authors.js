@@ -85,16 +85,16 @@ router.delete("/:id", async (req, res) => {
   let author;
   try {
     author = await Author.findById(req.params.id);
-    console.log(author);
-    // await Author.remove(req.params.id);
-    await author.drop();
+    //console.log(author);
+    await author.deleteOne();
     res.redirect("/authors");
-  } catch {
+  } catch (err) {
     // console.log(author);
     if (author == null) {
       res.redirect("/");
     } else {
       res.redirect(`/authors/${author.id}`);
+      //return res.status(500).json({ message: err.message });
     }
   }
 });
