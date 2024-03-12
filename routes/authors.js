@@ -5,7 +5,6 @@ const Author = require("../models/author");
 //All Authors Route
 router.get("/", async (req, res) => {
   let searchOptions = {};
-  console.log(searchOptions);
   if (req.query.name != null && req.query.name !== "") {
     searchOptions.name = new RegExp(req.query.name, "i");
   }
@@ -66,15 +65,14 @@ router.put("/:id", async (req, res) => {
   let author;
   try {
     author = await Author.findById(req.params.id);
-    author.name = req.body.name;
+    author.name = req.body.name; //change the name before save
     await author.save();
     res.redirect(`/authors/${author.id}`);
-    //res.redirect(`authors`);
   } catch {
     if (author == null) {
       res.redirect("/");
     } else {
-      res.render("authors/edit", {
+      res.render("/authors/edit", {
         author: author,
         errorMessage: "Error updating Author",
       });
@@ -83,8 +81,22 @@ router.put("/:id", async (req, res) => {
 });
 
 //delete author route
-router.delete("/:id", (req, res) => {
-  res.send("Delete Author " + req.params.id);
+router.delete("/:id", async (req, res) => {
+  let author;
+  try {
+    author = await Author.findById(req.params.id);
+    console.log(author);
+    // await Author.remove(req.params.id);
+    await author.drop();
+    res.redirect("/authors");
+  } catch {
+    // console.log(author);
+    if (author == null) {
+      res.redirect("/");
+    } else {
+      res.redirect(`/authors/${author.id}`);
+    }
+  }
 });
 
 module.exports = router;
