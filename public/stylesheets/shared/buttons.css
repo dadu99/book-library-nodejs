@@ -1,0 +1,56 @@
+:root {
+  --color-btn-primary-background: #88aa8d;
+  --color-btn-primary-background-dark: #0C3B2E;
+  --color-btn-primary-text: black;
+  --color-btn-primary-text-dark: white;
+  --color-btn-border: black;
+  --color-btn-danger-background: #BB8A52;
+  --color-btn-danger-background-dark: #aa623c;
+  --color-btn-danger-text: black;
+  --color-btn-danger-text-dark: white;
+}
+
+.btn {
+  border: none;
+  border-radius: 8px;
+  padding: .5rem 1rem;
+  font-size: 1.2rem;
+  font-family: 'Gotham Rounded';
+  cursor: pointer;
+  text-decoration: none;
+  text-align: center;
+  transition: 0.3s;
+}
+
+.btn-row {
+  display: flex;
+  align-items: flex-start;
+}
+
+.btn-row > * {
+  margin-left: 1rem;
+}
+
+.btn-row > *:first-child {
+  margin-left: 0;
+}
+
+.btn-primary {
+  color: var(--color-btn-primary-text);
+  background-color: var(--color-btn-primary-background);
+}
+
+.btn-primary:hover {
+  color: var(--color-btn-primary-text-dark);
+  background-color: var(--color-btn-primary-background-dark);
+}
+
+.btn-danger {
+  color: var(--color-btn-danger-text);
+  background-color: var(--color-btn-danger-background);
+}
+
+.btn-danger:hover {
+  color: var(--color-btn-danger-text-dark);
+  background-color: var(--color-btn-danger-background-dark);
+}

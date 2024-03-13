@@ -22,6 +22,14 @@ app.use(methodOverride("_method"));
 app.use(express.static("public"));
 app.use(bodyParser.urlencoded({ limit: "10mb", extended: false }));
 
+//Active menu item
+app.use((req, res, next) => {
+  res.locals.isActive = (link) => {
+    return req.originalUrl === link ? "active" : "";
+  };
+  next();
+});
+
 //begin connect to mongo database
 const mongoose = require("mongoose");
 mongoose.connect(process.env.DATABASE_URL, {
