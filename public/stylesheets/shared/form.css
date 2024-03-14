@@ -65,3 +65,6 @@
   color: var(--color-text-light);
   font-size: inherit;
 }
+.filepond--panel-root {
+  background-color: var(--form-input-background-color);
+}
