@@ -30,6 +30,11 @@ app.use((req, res, next) => {
   next();
 });
 
+//add favicon book image using '$ npm install serve-favicon'
+var favicon = require("serve-favicon");
+var path = require("path");
+app.use(favicon(path.join(__dirname, "public", "book.ico")));
+
 //begin connect to mongo database
 const mongoose = require("mongoose");
 mongoose.connect(process.env.DATABASE_URL, {
