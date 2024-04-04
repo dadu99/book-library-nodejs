@@ -68,3 +68,13 @@
 .filepond--panel-root {
   background-color: var(--form-input-background-color);
 }
+@media screen and (max-width:550px) {
+  .form-row {
+    display: flex;
+    flex-direction: column;
+    gap: 7px;
+  }
+  .form-item {
+    margin-left: 0;
+  }
+}

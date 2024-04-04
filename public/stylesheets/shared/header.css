@@ -46,3 +46,26 @@
 .header-nav li a:hover, .header-title:hover {
   font-weight: var(--nav-link-font-weight-bold);
 }
+
+@media screen and (max-width:768px) {
+  .header-nav {
+    display: flex;
+    flex-direction: column;
+
+  }
+  .header-nav ul {
+    justify-content: center;
+    align-items: center;
+    margin: 25px 0 25px 0;
+    gap: 5px;
+  }
+  .header-nav li a {
+    padding: 5px;
+  }
+}
+@media screen and (max-width: 550px) {
+  .header-nav ul {
+      justify-content: flex-start;
+      flex-direction: column;
+  }
+}

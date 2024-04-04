@@ -54,3 +54,13 @@
   color: var(--color-btn-danger-text-dark);
   background-color: var(--color-btn-danger-background-dark);
 }
+
+@media screen and (max-width: 550px){
+  .btn-row > * {
+    margin-left: 0;
+  }
+  .btn-row {
+    display: flex;
+    gap: 3px;
+}
+}

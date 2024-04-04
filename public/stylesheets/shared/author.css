@@ -8,3 +8,16 @@
 .author-name {
   font-size: 1.3em;
 }
+
+@media screen and (max-width: 550px) {
+  .author-row {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+}
+.author-name {
+  font-size: 1.2em;
+  font-weight: 300;
+}
+
+}
