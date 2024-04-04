@@ -17,9 +17,7 @@
     "express-ejs-layouts": "^2.5.1",
     "method-override": "^3.0.0",
     "mongoose": "^8.2.1",
-    "serve-favicon": "^2.5.0"
-  },
-  "devDependencies": {
+    "serve-favicon": "^2.5.0",
     "dotenv": "^16.4.5",
     "nodemon": "^3.1.0"
   }
